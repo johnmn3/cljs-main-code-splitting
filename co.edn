@@ -1,0 +1,23 @@
+{;:main xmod-auto-init.main
+ ;:output-to "out/main.js"
+ :watch "modules"
+ :output-dir "out"
+ :asset-path "/out"
+ :optimizations :none
+ :source-map true
+ :browser-repl true
+ :modules
+  {:mod-one
+     {:entries #{mod-one.main}
+      :output-to "out/mod_one.js"}
+   :mod-two
+     {:entries #{mod-two.main}
+      :output-to "out/mod_two.js"}
+   :mod-three
+     {:entries #{mod-three.main}
+      :output-to "out/mod_three.js"}
+      ;:depends-on #{:mod-one :mod-two}}
+   :mod-init
+     {:entries #{mod-init.main}
+      :output-to "out/main.js"}}}
+      ;:depends-on #{:mod-one :mod-two :mod-three}}}}

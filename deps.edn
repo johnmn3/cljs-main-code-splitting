@@ -1,0 +1,7 @@
+{:paths ["modules"]
+ :deps
+ {org.clojure/clojure {:mvn/version "1.10.0-alpha4"}
+  ;org.clojure/clojurescript
+  ;  {:git/url "https://github.com/johnmn3/clojurescript.git"
+  ;   :sha "76df3065338cde5c3a91460bf3bcc76ea4e503e0"}}}
+  org.clojure/clojurescript {:mvn/version "1.10.238"}}}
