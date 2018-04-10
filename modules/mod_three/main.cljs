@@ -1,33 +1,25 @@
 (ns mod-three.main
   (:require
+   [mod-one.lazy :as one]
+   [mod-two.lazy :as two]
    [mod-four.main :as four]
    [cljs.loader :as loader]))
 
 (enable-console-print!)
 
-;; module three depends on lib four and module one and two
-
-(println "mod-three.main launching")
-
 ;; provides
-(defn hi-three []
-  (println "hi from mod-three.main"))
+(defn hi-three [x]
+  (dotimes [n 3]
+    (println x n "times")))
 
 
-;; use lib
-(println "mod-three.main calling hi-four")
+;; call lib
 (four/hi-four)
 
 
-;; user modules
-(println "in mod-three calling hi-one")
-(loader/load :mod-one
-  (fn []
-    ((resolve 'mod-one.main/hi-one))))
+;; call modules
+(one/hi-one "mod-three")
 
-(println "in mod-three calling hi-two")
-(loader/load :mod-two
-  (fn []
-    ((resolve 'mod-two.main/hi-two))))
+(two/hi-two 3)
 
 (loader/set-loaded! :mod-three)

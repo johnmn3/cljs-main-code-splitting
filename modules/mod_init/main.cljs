@@ -1,26 +1,23 @@
 (ns mod-init.main
   (:require
-    [cljs.loader :as loader]))
+    [cljs.loader :as loader]
+    [mod-one.lazy :as one]
+    [mod-two.lazy :as two]
+    [mod-three.lazy :as three]
+    [mod-four.main :as four]))
+
+(loader/set-loaded! :mod-init)
 
 (enable-console-print!)
 
-;; depends on all modules but not lib four
+(println "mod-init.main started")
 
-(println "mod-init.main launching")
+(one/hi-one "mod-init")
 
-(println "in mod-init calling hi-one")
-(loader/load :mod-one
-  (fn []
-    ((resolve 'mod-one.main/hi-one))))
+(two/hi-two 100)
 
-(println "in mod-init calling hi-two")
-(loader/load :mod-two
-  (fn []
-    ((resolve 'mod-two.main/hi-two))))
+(three/hi-three "mod-init")
 
-(println "in mod-init calling hi-three")
-(loader/load :mod-three
-  (fn []
-    ((resolve 'mod-three.main/hi-three))))
+(four/hi-four)
 
-(loader/set-loaded! :mod-init)
+(println "mod-init.main finished")

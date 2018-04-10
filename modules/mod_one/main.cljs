@@ -1,16 +1,11 @@
 (ns mod-one.main
   (:require
+    [mod-base.lazy :as base]
     [cljs.loader :as loader]))
 
 (enable-console-print!)
 
-; mod-one has no module or library dependencies
-
-(println "mod-one.main launching")
-
-
-;; provides
-(defn hi-one []
-  (println "hi from mod-one.main"))
+(defn hi-one [arg]
+  (println "hi" arg "from mod-one"))
 
 (loader/set-loaded! :mod-one)

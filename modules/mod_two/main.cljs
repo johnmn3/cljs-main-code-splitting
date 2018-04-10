@@ -1,28 +1,21 @@
 (ns mod-two.main
   (:require
+   [mod-base.lazy :as base]
+   [mod-one.lazy :as one]
    [mod-four.main :as four]
    [cljs.loader :as loader]))
 
 (enable-console-print!)
 
-;; depends on lib four and module one
-
-(println "mod-two.main launching")
-
 ;; provides
-(defn hi-two []
-  (println "hi from mod-two.main"))
+(defn hi-two [n] (println "2 + " n " is " (+ 2 n)))
 
 
 ;; call lib
-(println "mod-two.main calling hi-four")
 (four/hi-four)
 
-
 ;; call modules
-(println "in mod-two calling hi-one")
-(loader/load :mod-one
-  (fn []
-    ((resolve 'mod-one.main/hi-one))))
+(one/hi-one "mod-two")
+
 
 (loader/set-loaded! :mod-two)
